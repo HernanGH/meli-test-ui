@@ -1,6 +1,12 @@
 $yellow: #fff159;
 $color: $yellow;
 
+%width-screen {
+  width: 75%;
+  max-width: 1218px;
+  min-width: 740px;
+}
+
 :global(body) {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -14,11 +20,66 @@ $color: $yellow;
 }
 
 :global(.nav-search) {
-  width: 75%;
   padding-top: 5px;
+  @extend %width-screen;
+  ul {
+    padding-left: 0px;
+  }
 }
+
+:global(.card-container-detail) {
+  height: 900px;
+  @extend %width-screen;
+}
+
+:global(.card-container-list) {
+  height: 220px;
+  @extend %width-screen;
+  img {
+    height: 160px;
+    width: 160px;
+  }
+}
+
+.breadcrumb {
+  padding-left: 5px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  @extend %width-screen;
+}
+
+.search-container {
+  width: 100%;
+  .search-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    :global(button) {
+      height: 40px;
+    }
+    :global(input) {
+      font-size: 16px;
+      margin: 0;
+      height: 40px;
+      width: 100%;
+      font-family: inherit;
+      padding: 7px 60px 9px 15px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      background-color: #fff;
+      border: 0 rgba(0,0,0,.2);
+    }
+  }
+}
+
+.product-image {
+  width: 90%;
+  margin-left: 3%;
+}
+
 .message {
-    color: $color;
+  color: $color;
 }
 
 .title {
@@ -78,37 +139,11 @@ a {
   font-size: 13px;
 }
 
-.search-box {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  button {
-    height: 40px;
-  }
-}
-
-.search-btn {
-  height: 40x !important; 
-}
-
-.input-search {
-  font-size: 16px;
-  margin: 0;
-  font-family: inherit;
-  padding: 7px 60px 9px 15px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  background-color: #fff;
-  border: 0 rgba(0,0,0,.2);
-}
 
 .conteiner {
   background-color: #ebebeb;
 }
 
-.breadcrumb {
-  width: 75%;
-}
 
 @media (max-width: 950px) {
   .input-search {

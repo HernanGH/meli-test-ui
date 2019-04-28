@@ -2,9 +2,9 @@ import React from 'react'
 import NextHead from 'next/head'
 import { string } from 'prop-types'
 
-const defaultDescription = ''
-const defaultOGURL = ''
-const defaultOGImage = ''
+const defaultDescription = 'La comunidad de compra y venta online más grande de América Latina.';
+const defaultOGURL = 'https://www.mercadolibre.com.ar/';
+const defaultOGImage = 'http:/localhost:3000/static/assets/Logo_ML@2x.png.png.png';
 
 const Head = props => (
   <NextHead>

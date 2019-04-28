@@ -1,31 +1,48 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/style.scss';
-import { Button, Row } from 'antd';
+import { Button, Row, Input } from 'antd';
+import Router from 'next/router';
 
-const Nav = () => (
-  <Row type="flex" justify="center" className='nav-container' >
-    <nav className='nav-search' >
-      <ul style={{paddingLeft: '0px'}}>
-        <li>
-          <Link prefetch href="/">
-            <img src='./static/assets/Logo_ML.png'></img>
-          </Link>
-        </li>
-        <li style={{width: '100%'}}>
-          <div className='search-box'>
-            <input className='input-search' placeholder='Nunca dejes de buscar' style={{width: '100%'}} ></input>
-            <Button className='search-btn' style={{height: '40px'}}>
-              <img  src='../static/assets/ic_Search.png'></img>
-            </Button>
-          </div>
-        </li>
-      </ul>
-      <style jsx>{
-        styles
-      }</style>
-    </nav>
-  </Row>
-)
+class Nav extends React.Component {
+  state = {
+    searchWord: '',
+  }
 
-export default Nav
+  onChange = (e) => {
+    const { value } = e.target;
+    this.setState({searchWord: value});
+  };
+
+  render() {
+    const { searchWord } = this.state;
+    const searchUrl = searchWord ? `/items?search=${searchWord}` : `/`;
+    return (
+      <Row type='flex' justify='center' className='nav-container' >
+        <nav className='nav-search' >
+          <ul>
+            <li>
+              <Link prefetch href='/'>
+                <img src='./static/assets/Logo_ML.png' />
+              </Link>
+            </li>
+            <li className='search-container'>
+              <div className='search-box'>
+                <Input value={searchWord} placeholder='Nunca dejes de buscar' onChange={this.onChange} onPressEnter={() => Router.push(searchUrl)} />
+                <Link href={searchUrl}>
+                  <Button>
+                    <img  src='../static/assets/ic_Search.png' />
+                  </Button>
+                </Link>
+              </div>
+            </li>
+          </ul>
+          <style jsx>{
+            styles
+          }</style>
+        </nav>
+      </Row>
+    );
+  }
+}
+export default Nav;

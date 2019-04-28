@@ -17,13 +17,8 @@ const Home = () => (
   <div>
     <Head title='Mercado Libre' />
     <Nav />
-    <Row>
-      <Breadcrumbs />
-      <ProductList products={products}/>
-    </Row>
-
     <style jsx>
-    {styles}
+      {styles}
     </style>
   </div>
 )
