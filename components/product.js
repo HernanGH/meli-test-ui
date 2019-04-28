@@ -1,26 +1,36 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../styles/style.scss';
 import { Card, Row, Col } from 'antd';
 
 const Product = ({product}) => {
-  console.log('Product');
+  const { 
+    picture, price, title, id,
+  } = product;
+  const detailUrl = '/items/' + id;
   return (
-  <Row type="flex" justify="center" >
-    <Card style={{height:'220px', width: '75%' }}>
-      <div style={{ float: 'left', width: '25%', paddingLeft: '5px', minWidth: '165px'}}>
-        <img  style={{height: '160px', width: '160px'}}src='http://mla-s1-p.mlstatic.com/936932-MLA27822107016_072018-I.jpg' />
-      </div>
-      <div style={{ float: 'left', width: '55%', textAlign: 'center'}}>
-        <p>
-          $ 90000
-        </p>
-        <p>
-          PAGALA EN 48 CUOTAS CONVENIO HONDA BANCO NACIÓN
-        </p>
-      </div>
-      <div style={{ float: 'left', width: '20%', textAlign: 'center'}}>
-        <p>Capital Federal</p>
-      </div>
+  <Row type='flex' justify='center' >
+    <Card className='card-container-list'>
+      <Row type='flex' justify='space-between'>
+        <Col span={3}>
+          <Link prefetch href={detailUrl} >
+            <img src={picture} />
+          </Link>
+        </Col>
+        <Col span={10}>
+          <p>
+            $ {price.amount}
+          </p>
+          <Link prefetch href={detailUrl} >
+            <p>
+              {title}
+            </p>
+          </Link>        
+        </Col>
+        <Col span={5}>
+          <p>Capital Federal</p>
+        </Col>
+      </Row>
     </Card>
     <style jsx>{
       styles

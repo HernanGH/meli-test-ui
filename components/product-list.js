@@ -5,11 +5,10 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 
 const ProductList = ({products}) => {
-    console.log('ProductList');
     return (
-        <>
+      <>
       {
-          products.map((product) => <Product product={product} />)
+          products.map((product, index) => <Product key={`product_${index}`} product={product} />)
       }
     <style jsx>{
       styles
