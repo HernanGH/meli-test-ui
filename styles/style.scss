@@ -7,6 +7,15 @@ $color: $yellow;
   min-width: 740px;
 }
 
+%text-product-item {
+  font-family: "Proxima Nova",Helvetica,Arial,sans-serif;
+  cursor: pointer;
+  color: #333;
+  :hover {
+    color:#000;
+  }
+}
+
 :global(body) {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -28,8 +37,13 @@ $color: $yellow;
 }
 
 :global(.card-container-detail) {
-  height: 900px;
+  height: 100%;
   @extend %width-screen;
+  :global(button) {
+    height: 45px;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
 
 :global(.card-container-list) {
@@ -38,6 +52,14 @@ $color: $yellow;
   img {
     height: 160px;
     width: 160px;
+  }
+}
+
+:global(.description-box){
+  margin-top: 45px;
+  :global(span) {
+    color: #666;
+    font-size: 18px;
   }
 }
 
@@ -73,9 +95,51 @@ $color: $yellow;
   }
 }
 
+.title-product-item {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 100;
+  @extend %text-product-item;
+}
+
+.price-product-box {
+  max-width: 115px;
+}
+
+.price-product-item {
+  line-height: 1.1;
+  font-size: 24px;
+  min-width: 100px;
+  @extend %text-product-item;
+}
+
 .product-image {
   width: 90%;
   margin-left: 3%;
+  max-height: 500px;
+}
+
+.title-product-detail {
+  font-size: 26px;
+  line-height: 1.05;
+  font-weight: 600;
+  color: #333;
+}
+
+.price-product-detail {
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1.8;
+  height: 80px;
+  span {
+    font-size: 20px;
+  }
+}
+
+.description-product-detail {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .message {

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/style.scss';
 import { Card, Row, Col } from 'antd';
-
+const freeShippinImg = './static/assets/ic_shipping.png';
 const Product = ({product}) => {
   const { 
     picture, price, title, id,
@@ -18,17 +18,30 @@ const Product = ({product}) => {
           </Link>
         </Col>
         <Col span={10}>
-          <p>
-            $ {price.amount}
-          </p>
-          <Link prefetch href={detailUrl} >
-            <p>
-              {title}
-            </p>
-          </Link>        
+          <Row type='flex' justify='start'>
+            <Col span={8} className='price-product-box'>
+              <Link prefetch href={detailUrl} >
+                <p className='price-product-item'>
+                  $ {Math.trunc(price.amount).toLocaleString()}
+                </p>
+              </Link>
+            </Col>
+            <Col span={4}>
+              {
+                product.free_shipping && <img style={{height: '25px', width: '25px'}} src={freeShippinImg} />
+              }
+            </Col>
+          </Row>
+          <Row>
+            <Link prefetch href={detailUrl} >
+              <span className='title-product-item'>
+                {title}
+              </span>
+            </Link>        
+          </Row>
         </Col>
         <Col span={5}>
-          <p>Capital Federal</p>
+          <p>{product.address}</p>
         </Col>
       </Row>
     </Card>

@@ -18,18 +18,19 @@ const Product = ({product}) => {
       </Col>
       <Col span={8} >
         <p>Nuevo - 235 vendidios </p>
-        <h1>
+        <h1 className='title-product-detail'>
             {title}
         </h1>
-        <h1>
-          $ {price.amount}.<span>{price.decimals}</span>
-        </h1>
+        <div className='price-product-detail'>
+          $ {Math.trunc(price.amount).toLocaleString()}
+          <span>{price.decimals}</span>
+        </div>
         <Button  type='primary' value='large' block>Comprar</Button>
       </Col>
     </Row>
-    <Row>
+    <Row className='description-box'>
       <Col span={16}>
-      <h2>Descripcion del Producto</h2>
+      <h2 className='description-product-detail'>Descripcion del Producto</h2>
       <Text>
         {description}
       </Text>
