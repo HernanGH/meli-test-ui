@@ -1,27 +1,72 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from '../components/head';
 import Nav from '../components/nav';
-import Breadcrumbs from '../components/breadcrumbs';
-import ProductList from '../components/product-list';
 import styles from '../styles/style.scss';
+import Breadcrumbs from '../components/breadcrumbs';
+import ProductDetail from '../components/product-detail';
+import ProductList from '../components/product-list';
 import { 
-  Button, Row
+  Button, Row, Empty
 } from 'antd';
+import { itemService } from '../services/item';
 
-const products = [
-  {}, {}
-];
+class Items extends React.Component {
+  static getInitialProps ({query}) {
+    const { search, id } = query;
+    if (search && !id) {
+      return itemService.searchItems(search)
+      .then(({ data }) => {
+          return { search, products: data.items, breadcrumb: data.breadcrumb };
+      });
+    }
+    if (id) {
+      return itemService.getItem(id)
+      .then(({ data }) => {
+        return { search, product: data.item , breadcrumb: data.breadcrumb};
+      });
+    }
+    return { search, products: [] };
+  }
 
-const Items = () => (
-  <div>
-    <Head title='Mercado Libre' />
-    <Nav />
-    <Row>
-      <Breadcrumbs />
+  getDescription = () => {
+    const { search, product, breadcrumb } = this.props;
+    if(search) {
+      return `Encontrá ${search} - ${breadcrumb.join(' - ')}`;
+    }
+    return product && product.description;
+  }
 
-    </Row>
-  </div>
-);
+  render() {
+    const { search, products, product, breadcrumb } = this.props;
+    return (
+      <div>
+        <Head title={search || product && product.title } 
+          description={this.getDescription()}
+        />
+        <Nav searchedWord={search || ''} />
+        <Row>
+          <Breadcrumbs breadcrumb={breadcrumb}/>
+          {
+            products && products.length && 
+            <ProductList products={products}/>
+          }
+          {
+            product && <ProductDetail product={product}/>
+          }
+          {
+            !products && !product && <Empty 
+            description={
+              <span>Lo sentimos! No se han encontrado resultados</span>
+            } />
+          }
+        </Row>
+        <style jsx>
+          {styles}
+        </style>
+      </div>
+    );
+  }
+}
 
-export default Items
+
+export default Items;

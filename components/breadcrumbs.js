@@ -2,14 +2,13 @@ import React from 'react';
 import styles from '../styles/style.scss';
 import { Breadcrumb, Row } from 'antd';
 
-const Breadcrumbs = () => (
-  <Row type="flex" justify="center" >
-    <div style={{width: '75%', paddingLeft: '5px'}}>
-      <Breadcrumb className='breadcrumb'>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item><a href="">Application Center</a></Breadcrumb.Item>
-        <Breadcrumb.Item><a href="">Application List</a></Breadcrumb.Item>
-        <Breadcrumb.Item>An Application</Breadcrumb.Item>
+const Breadcrumbs = ({breadcrumb}) => (
+  <Row type='flex' justify='center' >
+    <div className='breadcrumb' >
+      <Breadcrumb>
+        {
+          breadcrumb && breadcrumb.map((breadcrumbItem, index) => <Breadcrumb.Item key={`breadcrumb_${index}`}>{breadcrumbItem}</Breadcrumb.Item>)
+        }
       </Breadcrumb>
     </div>
     <style jsx>{
