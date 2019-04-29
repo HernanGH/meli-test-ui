@@ -1,6 +1,7 @@
-const withCss = require('@zeit/next-css')
+const withCss = require('@zeit/next-css');
+
 if (typeof require !== 'undefined') {
-  require.extensions['.css'] = file => {}
+  require.extensions['.css'] = () => ({});
 }
 
 module.exports = withCss({
@@ -12,12 +13,12 @@ module.exports = withCss({
         {
           loader: require('styled-jsx/webpack').loader,
           options: {
-            type: 'scoped'
-          }
+            type: 'scoped',
+          },
         },
-        'sass-loader'
-      ]
-    })
-    return config
-  }
-})
+        'sass-loader',
+      ],
+    });
+    return config;
+  },
+});

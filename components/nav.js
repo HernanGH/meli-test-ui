@@ -4,6 +4,8 @@ import { Button, Row, Input } from 'antd';
 import Router from 'next/router';
 import { string } from 'prop-types';
 import styles from '../styles/style.scss';
+import Config from '../config/Config';
+
 
 class Nav extends React.Component {
   state = {
@@ -16,6 +18,7 @@ class Nav extends React.Component {
   };
 
   render() {
+    Config.getWebUrl();
     const { searchWord } = this.state;
     const { searchedWord } = this.props;
     const searchUrl = searchWord ? `/items?search=${searchWord}` : '/';
@@ -25,7 +28,7 @@ class Nav extends React.Component {
           <ul>
             <li>
               <Link href='/'>
-                <img src='http://localhost:3000/static/assets/Logo_ML.png' />
+                <img src={`${Config.getWebUrl()}/static/assets/Logo_ML.png`} />
               </Link>
             </li>
             <li className='search-container'>
@@ -33,7 +36,7 @@ class Nav extends React.Component {
                 <Input value={searchWord || searchedWord} placeholder='Nunca dejes de buscar' onChange={this.onChange} onPressEnter={() => Router.push(searchUrl)} />
                 <Link prefetch href={searchUrl} >
                   <Button>
-                    <img src='http://localhost:3000/static/assets/ic_Search.png' />
+                    <img src={`${Config.getWebUrl()}/static/assets/ic_Search.png`} />
                   </Button>
                 </Link>
               </div>
