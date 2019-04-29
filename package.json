@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "eslint": "eslint ."
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -16,6 +17,12 @@
     "react-dom": "16.8.6"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0"
   }

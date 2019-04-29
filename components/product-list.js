@@ -1,18 +1,21 @@
 import React from 'react';
-import styles from '../styles/style.scss';
+import { array } from 'prop-types';
 import Product from './product';
-import { Layout } from 'antd';
-const { Content } = Layout;
+import styles from '../styles/style.scss';
 
-const ProductList = ({products}) => {
-    return (
-      <>
-      {
-          products.map((product, index) => <Product key={`product_${index}`} product={product} />)
-      }
+const ProductList = ({ products }) => (
+  <>
+    {
+      products.map((product, index) => <Product key={`product_${index}`} product={product} />)
+    }
     <style jsx>{
       styles
     }</style>
-    </>)
-}
-export default ProductList
+  </>
+);
+
+ProductList.prototype = {
+  products: array,
+};
+
+export default ProductList;

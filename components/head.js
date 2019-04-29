@@ -1,6 +1,6 @@
-import React from 'react'
-import NextHead from 'next/head'
-import { string } from 'prop-types'
+import React from 'react';
+import NextHead from 'next/head';
+import { string } from 'prop-types';
 
 const defaultDescription = 'La comunidad de compra y venta online más grande de América Latina.';
 const defaultOGURL = 'https://www.mercadolibre.com.ar/';
@@ -32,13 +32,13 @@ const Head = props => (
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='630' />
   </NextHead>
-)
+);
 
 Head.propTypes = {
   title: string,
   description: string,
   url: string,
-  ogImage: string
-}
+  ogImage: string,
+};
 
-export default Head
+export default Head;
