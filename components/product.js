@@ -5,6 +5,7 @@ import { Card, Row, Col } from 'antd';
 import styles from '../styles/style.scss';
 
 const freeShippinImg = './static/assets/ic_shipping.png';
+const bodyStyle = { padding: 0 };
 const Product = ({ product }) => {
   const {
     picture, price, title, id,
@@ -12,14 +13,14 @@ const Product = ({ product }) => {
   const detailUrl = `/items/${id}`;
   return (
     <Row type='flex' justify='center' >
-      <Card className='card-container-list'>
+      <Card className='card-container-list' bodyStyle={bodyStyle}>
         <Row type='flex' justify='space-between'>
-          <Col span={3}>
+          <Col span={5}>
             <Link prefetch href={detailUrl} >
-              <img src={picture} />
+              <img className='image-product' src={picture} />
             </Link>
           </Col>
-          <Col span={10}>
+          <Col span={10} className='information-product-item'>
             <Row type='flex' justify='start'>
               <Col span={8} className='price-product-box'>
                 <Link prefetch href={detailUrl} >
@@ -42,8 +43,8 @@ const Product = ({ product }) => {
               </Link>
             </Row>
           </Col>
-          <Col span={5}>
-            <p>{product.address}</p>
+          <Col span={5} className='information-product-item'>
+            <p className='address'>{product.address}</p>
           </Col>
         </Row>
       </Card>

@@ -1,5 +1,10 @@
-$yellow: #fff159;
-$color: $yellow;
+$yellow: #FFE600;
+$light-black: #333333;
+$grey: #999999;
+$light-grey: #EEEEEE;
+$blue: #3483FA;
+$white: #FFF;
+$black: #000;
 
 %width-screen {
   width: 75%;
@@ -10,9 +15,9 @@ $color: $yellow;
 %text-product-item {
   font-family: "Proxima Nova",Helvetica,Arial,sans-serif;
   cursor: pointer;
-  color: #333;
+  color: $light-black;
   :hover {
-    color:#000;
+    color:$black;
   }
 }
 
@@ -20,7 +25,7 @@ $color: $yellow;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
   Helvetica, sans-serif;
-  background-color: #ebebeb;
+  background-color: $light-grey;
 }
 
 :global(.nav-container) {
@@ -49,26 +54,34 @@ $color: $yellow;
 :global(.card-container-list) {
   height: 220px;
   @extend %width-screen;
-  img {
-    height: 160px;
-    width: 160px;
+  :global(.image-product) {
+    margin: 16px;
+    height: 180px;
+    width: 180px;
+    border-radius: 4px;
   }
 }
 
 :global(.description-box){
   margin-top: 45px;
+  margin-left: 32px;
   :global(span) {
-    color: #666;
-    font-size: 18px;
+    color: $grey;
+    font-size: 16px;
   }
+}
+
+:global(.information-product-item) {
+  margin-top: 46px;
 }
 
 .breadcrumb {
   padding-left: 5px;
-  height: 40px;
+  height: 48px;
   display: flex;
   align-items: center;
   @extend %width-screen;
+  font-size: 14px;
 }
 
 .search-container {
@@ -79,9 +92,10 @@ $color: $yellow;
     width: 100%;
     :global(button) {
       height: 40px;
+      background-color: $light-grey;
     }
     :global(input) {
-      font-size: 16px;
+      font-size: 18px;
       margin: 0;
       height: 40px;
       width: 100%;
@@ -89,7 +103,7 @@ $color: $yellow;
       padding: 7px 60px 9px 15px;
       -webkit-border-radius: 2px;
       border-radius: 2px;
-      background-color: #fff;
+      background-color: $white;
       border: 0 rgba(0,0,0,.2);
     }
   }
@@ -110,35 +124,50 @@ $color: $yellow;
   line-height: 1.1;
   font-size: 24px;
   min-width: 100px;
+  margin-bottom: 32px;
   @extend %text-product-item;
 }
 
 .product-image {
   width: 90%;
   margin-left: 3%;
-  max-height: 500px;
+  max-height: 680px;
+}
+
+:global(.product-detail-box) {
+  margin-top: 8px;
+  :global(button) {
+    margin-right: 32px;
+    width: 98%;
+    background-color: $blue;
+  }
 }
 
 .title-product-detail {
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1.05;
   font-weight: 600;
-  color: #333;
+  color: $light-black;
+}
+
+.subtitle-product-detail {
+  font-size: 14px;
+  margin-bottom: 16px;
 }
 
 .price-product-detail {
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 300;
   line-height: 1.8;
-  height: 80px;
-  span {
+  margin-bottom: 14px;
+  .decimals {
     font-size: 20px;
   }
 }
 
 .description-product-detail {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1;
 }
 
@@ -156,10 +185,9 @@ li {
   padding: 6px 8px;
 }
 
-.conteiner {
-  background-color: #ebebeb;
+.address {
+  font-size: 12px;
 }
-
 
 @media (max-width: 950px) {
   .input-search {

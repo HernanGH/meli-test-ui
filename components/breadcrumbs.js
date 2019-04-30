@@ -6,7 +6,7 @@ import styles from '../styles/style.scss';
 const Breadcrumbs = ({ breadcrumb }) => (
   <Row type='flex' justify='center'>
     <div className='breadcrumb'>
-      <Breadcrumb>
+      <Breadcrumb separator='>'>
         {
           breadcrumb && breadcrumb.map(breadcrumbItem => <Breadcrumb.Item key={`breadcrumb_${breadcrumbItem}`}>{breadcrumbItem}</Breadcrumb.Item>)
         }

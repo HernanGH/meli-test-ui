@@ -18,15 +18,15 @@ const Product = ({ product }) => {
           <Col span={16} >
             <img className='product-image' src={picture} />
           </Col>
-          <Col span={8} >
-            <p>Nuevo - 235 vendidios </p>
+          <Col span={8} className='product-detail-box'>
+            <p className='subtitle-product-detail'>Nuevo - 235 vendidos </p>
             <h1 className='title-product-detail'>
               {title}
             </h1>
-            <div className='price-product-detail'>
+            <h1 className='price-product-detail'>
               $ {Math.trunc(price.amount).toLocaleString()}
-              <span>{price.decimals}</span>
-            </div>
+            </h1>
+            <span className='decimals'>{price.decimals}</span>
             <Button type='primary' value='large' block>Comprar</Button>
           </Col>
         </Row>
