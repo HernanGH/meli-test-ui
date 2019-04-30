@@ -20,17 +20,24 @@ Find the most recent version of this guide at [here](https://github.com/segmenti
 ├── components
 │   ├── breadcrumbs.js
 │   ├── head.js
-│   └── nav.js
+│   ├── nav.js
+│   ├── product-detail.js
 │   ├── product-list.js
-│   ├── product.js
+│   └── product.js
+├── config
+│   └── Config.js
 ├── node_modules
-│   ├── [...]
-├── package.json
+│   └── [...]
 ├── pages
 │   └── index.js
 │   └── items.js
-└── static
-    └── favicon.ico
+├── services
+│   └── item.js
+├── static
+│   ├── assets
+│   └── favicon.ico
+└── styles
+    └── styles.scss
 ```
 
 ## Available Scripts
